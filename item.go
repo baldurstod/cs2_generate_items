@@ -19,6 +19,10 @@ var ITEM_FIELDS = map[string]string{
 	"item_rarity": "rarity",
 	"workshop_accepted": "workshopAccepted",
 	"used_by_classes": "used_by_classes",
+	"flexible_loadout_slot": "flexible_loadout_slot",
+	"flexible_loadout_group": "flexible_loadout_group",
+	"flexible_loadout_category": "flexible_loadout_category",
+	"flexible_loadout_default": "flexible_loadout_default",
 }
 
 type item struct {
