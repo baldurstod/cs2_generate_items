@@ -18,6 +18,7 @@ var ITEM_FIELDS = map[string]string{
 	"baseitem": "baseItem",
 	"item_rarity": "rarity",
 	"workshop_accepted": "workshopAccepted",
+	"used_by_classes": "used_by_classes",
 }
 
 type item struct {
@@ -68,6 +69,18 @@ func (this *item) getStringAttribute(attributeName string) (string, bool) {
 	return "", false
 }
 
+func (this *item) getStringMapAttribute(attributeName string, i *itemStringMap) {
+	for _, prefab := range this.prefabs {
+		prefab.getStringMapAttribute(attributeName, i)
+	}
+
+	if sm, ok := this.kv.GetStringMap(attributeName); ok {
+		for key, val := range *sm {
+			(*i)[key] = val
+		}
+	}
+}
+
 func (this *item) getUsedByHeroes() []string {
 	ret := []string{}
 
@@ -98,6 +111,12 @@ func (this *item) MarshalJSON() ([]byte, error) {
 			}
 
 			ret[outKey] = s
+		} else {
+			attribute := make(itemStringMap)
+			this.getStringMapAttribute(inKey, &attribute)
+			if len(attribute) > 0 {
+				ret[outKey] = attribute
+			}
 		}
 	}
 

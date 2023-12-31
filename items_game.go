@@ -7,6 +7,7 @@ import (
 
 type itemMap map[string]*item
 type itemGameMap map[string]interface{}
+type itemStringMap map[string]string
 
 type itemsGame struct {
 	medals bool `default:false`
