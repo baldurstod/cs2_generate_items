@@ -9,15 +9,10 @@ import (
 )
 
 var ITEM_FIELDS = map[string]string{
-	"image_inventory": "imageInventory",
-	"model_player": "modelPlayer",
-	"model_player1": "modelPlayer1",
-	"model_player2": "modelPlayer2",
-	"model_player3": "modelPlayer3",
-	"item_slot": "slot",
-	"baseitem": "baseItem",
-	"item_rarity": "rarity",
-	"workshop_accepted": "workshopAccepted",
+	"image_inventory": "image_inventory",
+	"model_player": "model_player",
+	"baseitem": "baseitem",
+	"item_rarity": "item_rarity",
 	"used_by_classes": "used_by_classes",
 	"flexible_loadout_slot": "flexible_loadout_slot",
 	"flexible_loadout_group": "flexible_loadout_group",
