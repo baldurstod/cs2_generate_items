@@ -67,11 +67,13 @@ func (this *itemsGame) init(dat []byte) {
 		}
 	}
 
-	if items, ok := this.itemsVDF.Get("items"); ok {
-		for _, val := range items.GetChilds() {
-			var it = item{}
-			if it.init(this, val) {
-				this.Items[it.Id] = &it
+	if allItems, ok := this.itemsVDF.GetAll("items"); ok {
+		for _, items := range allItems {
+			for _, val := range items.GetChilds() {
+				var it = item{}
+				if it.init(this, val) {
+					this.Items[it.Id] = &it
+				}
 			}
 		}
 	}
